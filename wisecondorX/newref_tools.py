@@ -69,7 +69,7 @@ def get_mask(samples):
     bins_per_chr = []
     sample_count = len(samples)
 
-    for chr in range(1, 25):
+    for chr in range(0, 25):
         max_len = max([sample[str(chr)].shape[0] for sample in samples])
         this_chr = np.zeros((max_len, sample_count), dtype=float)
         bins_per_chr.append(max_len)
