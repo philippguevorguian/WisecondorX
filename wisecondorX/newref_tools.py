@@ -161,7 +161,7 @@ def get_reference(pca_corrected_data, masked_bins_per_chr, masked_bins_per_chr_c
         if end_num < end:
             end = end_num
 
-        if len(masked_bins_per_chr_cum) > 22 and chr != 22 and chr != 23:
+        if len(masked_bins_per_chr_cum) > 22+1 and chr != 22 and chr != 23:
             part_indexes = np.zeros((end - start, ref_size), dtype=np.int32)
             part_distances = np.ones((end - start, ref_size))
             big_indexes.extend(part_indexes)
