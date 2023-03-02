@@ -42,7 +42,7 @@ def convert_reads(args):
     larp2 = -1
 
     logging.info('Converting aligned reads ... This might take a while ...')
-
+    
     for index, chr in enumerate(reads_file.references):
 
         chr_name = chr
@@ -78,7 +78,7 @@ def convert_reads(args):
                 "NC_060947":23,
                 "NC_060948":24
                 }
-                    
+        chr_name = chr_rename_dict[chr_name]
         if chr_name not in bins_per_chr and chr_name != 'X' and chr_name != 'Y':
             
             continue
