@@ -14,7 +14,8 @@ individual reads to counts per bin.
 
 def convert_reads(args):
     bins_per_chr = dict()
-    for chr in range(1, 25):
+    
+    for chr in range(0, 25):
         bins_per_chr[str(chr)] = None
 
     logging.info('Importing data ...')
@@ -45,9 +46,41 @@ def convert_reads(args):
     for index, chr in enumerate(reads_file.references):
 
         chr_name = chr
+        # remove the chr from chr1,chr2,chr3 etc...
+        
         if chr_name[:3].lower() == 'chr':
             chr_name = chr_name[3:]
+
+        chr_rename_dict = {
+                "":0,
+                "":1,
+                "":2,
+                "":3,
+                "":4,
+                "":5,
+                "":6,
+                "":7,
+                "":8,
+                "":9,
+                "":10,
+                "":11,
+                "":12,
+                "":13,
+                "":14,
+                "":15,
+                "":16,
+                "":17,
+                "":18,
+                "":19,
+                "":20,
+                "":21,
+                "":22,
+                "":23,
+                "":24
+                }
+                    
         if chr_name not in bins_per_chr and chr_name != 'X' and chr_name != 'Y':
+            
             continue
 
         logging.info('Working at {}; processing {} bins'
@@ -59,7 +92,7 @@ def convert_reads(args):
             chr_name = '23'
         if chr_name == 'Y':
             chr_name = '24'
-
+        
         for read in bam_chr:
             if read.is_paired:
                 if not read.is_proper_pair:
