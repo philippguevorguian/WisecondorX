@@ -78,13 +78,14 @@ def convert_reads(args):
                 "NC_060947":23,
                 "NC_060948":24
                 }
-                    
+        chr_name = chr_rename_dict[chr_name] 
         if chr_name not in bins_per_chr and chr_name != 'X' and chr_name != 'Y':
             
             continue
 
         logging.info('Working at {}; processing {} bins'
                      .format(chr, int(reads_file.lengths[index] / float(args.binsize) + 1)))
+        logging.info(f"really new name is {chr_name} ")
         counts = np.zeros(int(reads_file.lengths[index] / float(args.binsize) + 1), dtype=np.int32)
         bam_chr = reads_file.fetch(chr)
 
