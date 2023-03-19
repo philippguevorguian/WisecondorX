@@ -55,9 +55,8 @@ def _generate_bins_bed(rem_input, results):
     results_r = results['results_r']
     results_z = results['results_z']
     binsize = rem_input['binsize']
-
     for chr in range(len(results_r)):
-        chr_name = str(chr + 1)
+        chr_name = str(chr)
         if chr_name == '23':
             chr_name = 'X'
         if chr_name == '24':
