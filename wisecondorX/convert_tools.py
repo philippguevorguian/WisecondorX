@@ -44,45 +44,42 @@ def convert_reads(args):
     logging.info('Converting aligned reads ... This might take a while ...')
     
     for index, chr in enumerate(reads_file.references):
-
         chr_name = chr
         # remove the chr from chr1,chr2,chr3 etc...
-        
         if chr_name[:3].lower() == 'chr':
             chr_name = chr_name[3:]
 
         chr_rename_dict = {
-                "telomere":0,
-                "NC_060925.1":1,
-                "NC_060926.1":2,
-                "NC_060927.1":3,
-                "NC_060928.1":4,
-                "NC_060929.1":5,
-                "NC_060930.1":6,
-                "NC_060931.1":7,
-                "NC_060932.1":8,
-                "NC_060933.1":9,
-                "NC_060934.1":10,
-                "NC_060935.1":11,
-                "NC_060936.1":12,
-                "NC_060937.1":13,
-                "NC_060938.1":14,
-                "NC_060939.1":15,
-                "NC_060940.1":16,
-                "NC_060941.1":17,
-                "NC_060942.1":18,
-                "NC_060943.1":19,
-                "NC_060944.1":20,
-                "NC_060945.1":21,
-                "NC_060946.1":22,
-                "NC_060947.1":23,
-                "NC_060948.1":24
+                "telomere":'0',
+                "NC_060925.1":'1',
+                "NC_060926.1":'2',
+                "NC_060927.1":'3',
+                "NC_060928.1":'4',
+                "NC_060929.1":'5',
+                "NC_060930.1":'6',
+                "NC_060931.1":'7',
+                "NC_060932.1":'8',
+                "NC_060933.1":'9',
+                "NC_060934.1":'10',
+                "NC_060935.1":'11',
+                "NC_060936.1":'12',
+                "NC_060937.1":'13',
+                "NC_060938.1":'14',
+                "NC_060939.1":'15',
+                "NC_060940.1":'16',
+                "NC_060941.1":'17',
+                "NC_060942.1":'18',
+                "NC_060943.1":'19',
+                "NC_060944.1":'20',
+                "NC_060945.1":'21',
+                "NC_060946.1":'22',
+                "NC_060947.1":'23',
+                "NC_060948.1":'24'
                 }
         chr_name = chr_rename_dict[chr_name] 
-        if chr_name not in bins_per_chr and chr_name != 'X' and chr_name != 'Y':
-            
-            continue
-
+        #if chr_name not in bins_per_chr and chr_name != 'X' and chr_name != 'Y':
+        #    print("we continued")
+        #    continue
         logging.info('Working at {}; processing {} bins'
                      .format(chr, int(reads_file.lengths[index] / float(args.binsize) + 1)))
         logging.info(f"really new name is {chr_name} ")
