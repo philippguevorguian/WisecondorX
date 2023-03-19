@@ -7,7 +7,6 @@ from scipy.stats import norm
 from sklearn.decomposition import PCA
 
 from wisecondorX.overall_tools import exec_R, get_z_score
-
 '''
 Returns gender based on Gaussian mixture
 model trained during newref phase.
@@ -30,8 +29,7 @@ Normalize sample for read depth and apply mask.
 def coverage_normalize_and_mask(sample, ref_file, ap):
     by_chr = []
 
-    chrs = range(1, len(ref_file['bins_per_chr{}'.format(ap)]) + 1)
-
+    chrs = range(0, len(ref_file['bins_per_chr{}'.format(ap)]))
     for chr in chrs:
         this_chr = np.zeros(ref_file['bins_per_chr{}'.format(ap)][chr - 1], dtype=float)
         min_len = min(ref_file['bins_per_chr{}'.format(ap)][chr - 1], len(sample[str(chr)]))
@@ -40,7 +38,6 @@ def coverage_normalize_and_mask(sample, ref_file, ap):
     all_data = np.concatenate(by_chr, axis=0)
     all_data = all_data / np.sum(all_data)
     masked_data = all_data[ref_file['mask{}'.format(ap)]]
-
     return masked_data
 
 
