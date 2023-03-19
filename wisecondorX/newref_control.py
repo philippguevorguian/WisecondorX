@@ -31,8 +31,7 @@ def tool_newref_prep(args, samples, gender, mask, bins_per_chr):
 
     bins_per_chr = bins_per_chr[:last_chr]
     mask = mask[:np.sum(bins_per_chr)]
-
-    masked_data = normalize_and_mask(samples, range(0, last_chr + 1), mask)
+    masked_data = normalize_and_mask(samples, range(0, last_chr + 0), mask)
     pca_corrected_data, pca = train_pca(masked_data)
 
     masked_bins_per_chr = [sum(mask[sum(bins_per_chr[:i]):sum(bins_per_chr[:i]) + x])
