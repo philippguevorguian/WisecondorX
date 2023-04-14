@@ -55,7 +55,10 @@ def project_pc(sample_data, ref_file, ap):
 
     reconstructed = np.dot(transform, pca.components_) + pca.mean_
     reconstructed = reconstructed[0]
-    return sample_data / reconstructed
+    test_div = sample_data / reconstructed 
+    test_div[0] = min(test_div[test_div>0])
+    return test_div 
+
 
 
 '''

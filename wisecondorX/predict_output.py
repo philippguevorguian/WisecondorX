@@ -135,9 +135,9 @@ def _generate_chr_statistics_file(rem_input, results):
     cpa = round(get_cpa(results['results_c'], rem_input['binsize']), 5)
     chr_z_scores = get_z_score(results_c_chr, results)
 
-    for chr in range(len(results['results_r'])):
+    for chr in range(len(results['results_r']+1)):
 
-        chr_name = str(chr + 1)
+        chr_name = str(chr)
         if chr_name == '23':
             chr_name = 'X'
         if chr_name == '24':
